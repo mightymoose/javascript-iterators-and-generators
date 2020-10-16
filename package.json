@@ -1,0 +1,25 @@
+{
+  "name": "javascript-iterators-and-generators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mightymoose/javascript-iterators-and-generators.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mightymoose/javascript-iterators-and-generators/issues"
+  },
+  "homepage": "https://github.com/mightymoose/javascript-iterators-and-generators#readme",
+  "dependencies": {
+    "yarn": "^1.22.10"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
+}

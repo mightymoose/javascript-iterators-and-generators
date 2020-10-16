@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Javascript Iterators and Generators</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					Javascript Iterators and Generators
+				</section>
+
+				<section>for let Demo</section>
+
+				<section>
+					<h4>Our motivating example</h4>
+					The Pomodoro Technique for time management
+				</section>
+
+				<section>
+					The pomodoro technique is a time management tool which
+					alternates between periods of focused work and shorter periods of rest.
+				</section>
+
+				<section>
+					<ul>
+						<li>Focus on a task for 25 minutes</li>
+						<li>Rest for 5 minutes</li>
+                        <br />
+						<li>Focus on a task for 25 minutes</li>
+						<li>Rest for 5 minutes</li>
+						<br />
+						<li>Focus on a task for 25 minutes</li>
+						<li>Rest for 5 minutes</li>
+						<br />
+						<li>Focus on a task for 25 minutes</li>
+						<li>Rest for 20 minutes</li>
+					</ul>
+				</section>
+
+				<section>Code for the pomodoro timer</section>
+
+				<section>Demo</section>
+
+				<section>Critique of the code</section>
+
+				<section>
+					In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination.
+				</section>
+
+				<section>
+					<pre><code>interface Iterator {
+  next(): {
+	done: boolean, // True if there are more
+                       // elements in the sequence
+
+	value: any     // The latest element of the sequence
+  };
+}</code></pre>
+				</section>
+                <section>
+					<pre><code>const arrayIterator = [1, 2, 3][Symbol.iterator]();
+
+console.log(arrayIterator.next());
+// { value: 1, done: false }
+
+console.log(arrayIterator.next());
+// { value: 2, done: false }
+
+console.log(arrayIterator.next())
+// { value: 3, done: false }
+
+console.log(arrayIterator.next())
+// { value: undefined, done: true }</code></pre>
+				</section>
+
+				<section>Code for the pomodoro timer using iterators</section>
+
+				<section>Demo</section>
+
+				<section>Critique of the code (again)</section>
+
+				<section>
+					While custom iterators are a useful tool, their creation requires careful programming due to the need to explicitly maintain their internal state. Generator functions provide a powerful alternative: they allow you to define an iterative algorithm by writing a single function whose execution is not continuous.
+				</section>
+
+				<section>
+                    <pre>
+					<code>function *countToThree() {
+  yield 1; // Pass control
+  yield 2;
+  yield 3;
+}
+
+const counting = countToThree();
+
+console.log(counting.next());
+// { value: 1, done: false }
+
+console.log(counting.next());
+// { value: 2, done: false }
+					</code>
+					</pre>
+				</section>
+
+				<section>Code for the pomodoro timer using generators</section>
+
+				<section>Demo</section>
+
+				<section>What is async/await?</section>
+
+				<section>Code for async/await</section>
+
+				<section>Demo</section>
+
+				<section>
+					<h3>Chrome's Javascript Engine</h3>
+					<img src="images/v8.png" />
+				</section>
+
+				<section>Code for fasync</section>
+
+				<section>Demo</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
